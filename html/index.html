@@ -3,43 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/logo.png" type="images/png">
     <link rel="stylesheet" href="/css/style.css">
     <title>EcoEventos</title>
 </head>
-<body>
-    <head>
-        <div>
-            <a href="/index.html"><p>Eventos Sostenibles</p> <img src="/images/logo.png" alt=""></a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Sostenibilidad</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-            <div>
-                <a href="#"><img src="/images/usuario.png" alt="icono_usuario"></a>
-                
+ <body>
+    <header>
+        <div class="header-container">
+            <a href="/index.html" class="logo-link">
+                <img src="/images/logo.png" alt="EcoEventos - Logo">
+                <p>Eventos Sostenibles</p>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="#" class="btn-login">Iniciar sesión</a>
+                <a href="#" class="btn-register">Registrarse</a>
             </div>
-        </nav>
-    </head>
+        </div>    
+    </header>
     <main>
-        <section>
-            <div>
-                <img src="" alt="">
-                <img src="" alt="">
-                <img src="" alt="">
-                <img src="" alt="">
+        <section class="hero">
+            <div class="carrusel">
+                <div class="carrusel-contenedor">
+                    <div class="carrusel-item"><img src="/images/img1.png" alt=""></div>
+                    <div class="carrusel-item"><img src="/images/img2.png" alt=""></div>
+                    <div class="carrusel-item"><img src="/images/img3.png" alt=""></div>
+                </div>
+            </div>
+            <div class="hero-content">
+                <h1>Transforma tus eventos en experiencias sostenibles</h1>
+                <p>La plataforma líder para organizar y participar en eventos con impacto positivo</p>
+                <div class="hero-buttons">
+                    <a href="/pages/eventos.html" class="btn-primary">Crear evento</a>
+                    <a href="/pages/detalle_evento.html" class="btn-secondary">Explorar eventos</a>
+                </div>
             </div>
         </section>
-        <section>
 
+        <section class="about-section">
+            <h2>¿Quiénes somos y a qué nos dedicamos?</h2>
+            <p>En EcoEventos somos pioneros en la transformación del sector de eventos hacia un modelo sostenible. Nuestra plataforma conecta organizadores de eventos con proveedores ecológicos, ofreciendo herramientas para minimizar el impacto ambiental de cualquier tipo de celebración, desde bodas hasta conferencias corporativas.</p>
+            <p>Fundada en 2018 por un equipo de expertos en sostenibilidad y tecnología, nuestra misión es hacer que la organización de eventos ecológicos sea accesible, sencilla y rentable para todos. Creemos que cada evento es una oportunidad para generar un impacto positivo en nuestro planeta.</p>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">1,250+</span>
+                    <span class="stat-label">Eventos sostenibles</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3,500+</span>
+                    <span class="stat-label">Toneladas de CO2 compensadas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">85%</span>
+                    <span class="stat-label">De residuos reciclados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.9/5</span>
+                    <span class="stat-label">Satisfacción de usuarios</span>
+                </div>
+            </div>
         </section>
     </main>
-    <footer>
-
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Eventos</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Precios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Guía de Sostenibilidad</a></li>
+                        <li><a href="#">Directorio de Proveedores</a></li>
+                        <li><a href="#">Calculadora de Huella</a></li>
+                        <li><a href="#">Certificaciones</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Casos de Éxito</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                        <li><a href="#">Trabaja con Nosotros</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2023 EcoEventos. Todos los derechos reservados.
+                </div>
+                <div class="footer-badges">
+                    <img src="img/b-corp-badge.png" alt="Certificación B Corp">
+                    <img src="img/eco-certified.png" alt="Certificado Ecológico">
+                </div>
+            </div>
+        </div>
     </footer>
+    <script src="/js/carrusel.js"></script>
 </body>
 </html>
