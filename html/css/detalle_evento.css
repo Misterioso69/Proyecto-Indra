@@ -1,0 +1,89 @@
+
+.detalle-evento {
+  display: flex;
+  gap: 2rem;
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 3rem auto;
+  max-width: 900px;
+  padding: 2rem;
+}
+
+.evento-imagen img {
+  width: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.evento-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.evento-datos {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.evento-datos li {
+  margin-bottom: 0.5rem;
+}
+
+.evento-descripcion {
+  margin-bottom: 1rem;
+}
+
+.btn-inscribirse {
+  background: #2e8b57;
+  color: #ffffff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-inscribirse:hover {
+  background: #3a5a40;
+}
+
+.ponentes {
+  margin: 3rem auto;
+  max-width: 900px;
+}
+
+.ponentes-lista {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.ponente {
+  background: #dad7cd;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  flex: 1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ponente img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.programa {
+  margin: 3rem auto;
+  max-width: 900px;
+}
+
+.programa ul {
+  padding-left: 1.5rem;
+}

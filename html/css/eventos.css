@@ -1,0 +1,76 @@
+
+.listado-eventos {
+  padding: 3rem 0;
+}
+
+.listado-eventos table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.listado-eventos th, .listado-eventos td {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.listado-eventos th {
+  background: #2e8b57;
+  color: #ffffff;
+}
+
+.listado-eventos tr:hover {
+  background: #dad7cd;
+}
+
+.btn-detalles {
+  background: #2e8b57;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-detalles:hover {
+  background: #3a5a40;
+}
+
+.destacado-evento {
+  margin: 3rem 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+
+.evento-card {
+  display: flex;
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 700px;
+}
+
+.evento-card img {
+  width: 220px;
+  object-fit: cover;
+}
+
+.evento-info {
+  padding: 2rem;
+}
+
+.eventos-pasados {
+  margin: 3rem 0;
+}
+
+.eventos-pasados ul {
+  padding-left: 1.5rem;
+}
+
+
