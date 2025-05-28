@@ -31,22 +31,21 @@ img {
   margin: 0 auto;
 }
 
-/* Header */
 header {
   background-color: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
 }
 
 .logo-link {
@@ -60,6 +59,7 @@ header {
 
 .logo-link img {
   height: 40px;
+  width: 40px;
 }
 
 nav ul {
@@ -130,7 +130,6 @@ nav a:hover::after {
   width: 24px;
 }
 
-/* Hero Section */
 .hero {
   position: relative;
   height: 80vh;
@@ -192,20 +191,20 @@ nav a:hover::after {
     align-items: center;
     text-align: center;
     color: white;
-    padding: 0 20px;
+    padding: 0 5%;
     background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3)100%);
 }
 
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  max-width: 600px;
+  max-width: 90%;
 }
 
 .hero-content p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  max-width: 500px;
+  max-width: 80%;
 }
 
 .hero-buttons {
@@ -241,7 +240,6 @@ nav a:hover::after {
   transform: translateY(-2px);
 }
 
-/* About Section */
 .about-section {
   padding: 4rem 0;
   background-color: #ffffff;
@@ -293,7 +291,6 @@ nav a:hover::after {
   color: #333333;
 }
 
-/* Footer */
 .footer {
   background-color: #3a5a40;
   color: #ffffff;
@@ -359,55 +356,5 @@ nav a:hover::after {
 
 .footer-badges img {
   height: 40px;
-}
-
-/* Media Queries para responsividad */
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  
-  nav ul {
-    gap: 1rem;
-  }
-  
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-  
-  .hero-content p {
-    font-size: 1rem;
-  }
-  
-  .stats-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer-bottom {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-buttons {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .btn-primary, .btn-secondary {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .stats-container {
-    grid-template-columns: 1fr;
-  }
+  width: 40px;
 }
