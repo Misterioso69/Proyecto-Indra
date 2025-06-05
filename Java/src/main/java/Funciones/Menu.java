@@ -26,12 +26,7 @@ public class Menu {
 	private static Map<Evento, ArrayList<Usuario>> incriscion = new HashMap<Evento, ArrayList<Usuario>>();
 
 	public static void menu() {
-		System.out.println("1.Crear Usario");
-		System.out.println("2.Crear Organizador");
-		System.out.println("3.Crear Evento");
-		System.out.println("4.Inscribirse a un Evento");
-		System.out.println("5.Listar Todo");
-		System.out.println("6.Salir");
+		System.out.println("1.Crear Usario\n2.Crear Organizador\n3.Crear Evento\n4.Inscribirse a un Evento\n5.Listar Todo\n6.Borra dato\n7.Salir");
 		System.out.println("----------------------------");
 		System.out.print("Elige una opcion:");
 		int a = sc.nextInt();
@@ -52,6 +47,9 @@ public class Menu {
 			listar_eventos();
 			break;
 		case 6:
+			delete();
+			break;
+		case 7:
 			salir();
 			break;
 		default:
@@ -64,9 +62,9 @@ public class Menu {
 		sc.nextLine();
 		System.out.println("Escribe tu nombre");
 		String nombre = sc.nextLine();
-		System.out.println("Escribe tu carreo");
+		System.out.println("Escribe tu correo");
 		String correo = sc.nextLine();
-		System.out.println("Escibe la contrasella");
+		System.out.println("Escibe la contraseña");
 		String contra = sc.nextLine();
 		Usuario a = new Usuario(nombre, correo, contra);
 		listaUsu.add(a);
@@ -184,36 +182,187 @@ public class Menu {
 	public static void listar_eventos() {
 		System.out.print("\nUsuarios:");
 		Iterator<Usuario> us = listaUsu.iterator();
-		while(us.hasNext()) {
+		while (us.hasNext()) {
 			Usuario a = us.next();
 			System.out.print(a);
 		}
 		System.out.println();
 		System.out.print("Organizadores: ");
 		Iterator<Organizador> or = listaOrga.iterator();
-		while(or.hasNext()) {
+		while (or.hasNext()) {
 			Organizador a = or.next();
-			System.out.print("[ nombre= "+a.getNombre()+", correo="+a.getCorreo()+"] ");
+			System.out.print("[ nombre= " + a.getNombre() + ", correo=" + a.getCorreo() + "] ");
 		}
 		System.out.println();
 		System.out.print("Eventos: ");
 		Iterator<Evento> ev = listaEven.iterator();
-		while(ev.hasNext()) {
+		while (ev.hasNext()) {
 			Evento a = ev.next();
 			System.out.print(a);
 		}
 		System.out.println();
 		System.out.print("Inscripcion: ");
-		Iterator<Map.Entry<Evento,ArrayList<Usuario> >> in = incriscion.entrySet().iterator();
-		while(in.hasNext()) {
-			Map.Entry<Evento ,  ArrayList<Usuario>> map = in.next();
+		Iterator<Map.Entry<Evento, ArrayList<Usuario>>> in = incriscion.entrySet().iterator();
+		while (in.hasNext()) {
+			Map.Entry<Evento, ArrayList<Usuario>> map = in.next();
 			Evento e = map.getKey();
-			ArrayList<Usuario>uu = map.getValue();
-			System.out.print("Eveneto: "+e+" Usuarios: "+uu);
+			ArrayList<Usuario> uu = map.getValue();
+			System.out.print("Eveneto: " + e + " Usuarios: " + uu);
 		}
 		System.out.println();
 		System.out.println();
 		menu();
+	}
+
+	public static void delete() {
+		System.out.println("\n¿Que quieres borrar: \n1.Usuario\n2.Organizador\n3.Eventos\n4.Inscripcion");
+		int caso = sc.nextInt();
+		switch (caso) {
+		case 1:
+			System.out.print("Usuarios:\n");
+			Iterator<Usuario> us = listaUsu.iterator();
+			while (us.hasNext()) {
+				Usuario a = us.next();
+				System.out.print(a);
+			}
+			sc.nextLine();
+			System.out.println("\n¿Que Usuario quires borrar?");
+			String nom = sc.nextLine();
+			boolean esta =false;
+			Usuario u = null;
+			Iterator<Usuario>usu = listaUsu.iterator();
+			while (usu.hasNext()) {
+				Usuario a = usu.next();
+				if(a.getNombre().equals(nom)) {
+					esta=true;
+					u=a;
+				}
+			}
+			if(esta) {
+				listaUsu.remove(u);
+				System.out.println("Usuario borrado\n");
+				menu();
+			}else {
+				System.out.println("El usuario no existe\n");
+				menu();
+			}
+			break;
+		case 2:
+			System.out.print("Organizador:\n");
+			Iterator<Organizador> or = listaOrga.iterator();
+			while (or.hasNext()) {
+				Organizador a = or.next();
+				System.out.print(a);
+			}
+			sc.nextLine();
+			System.out.println("\n¿Que Organizador quires borrar?");
+			String nomb = sc.nextLine();
+			boolean estao =false;
+			Organizador o = null;
+			Iterator<Organizador>org = listaOrga.iterator();
+			while (org.hasNext()) {
+				Organizador a = org.next();
+				if(a.getNombre().equals(nomb)) {
+					estao=true;
+					o=a;
+				}
+			}
+			if(estao) {
+				listaOrga.remove(o);
+				System.out.println("Organizador borrado\n");
+				menu();
+			}else {
+				System.out.println("El organizador no existe\n");
+				menu();
+			}
+			break;
+		case 3:
+			System.out.print("Evento:\n");
+			Iterator<Evento> ev = listaEven.iterator();
+			while (ev.hasNext()) {
+				Evento a = ev.next();
+				System.out.print(a);
+			}
+			sc.nextLine();
+			System.out.println("\n¿Que Evento quires borrar?");
+			String nombr = sc.nextLine();
+			boolean estae =false;
+			Evento e = null;
+			Iterator<Evento>eve= listaEven.iterator();
+			while (eve.hasNext()) {
+				Evento a = eve.next();
+				if(a.getNombre().equals(nombr)) {
+					estae=true;
+					e=a;
+				}
+			}
+			if(estae) {
+				listaEven.remove(e);
+				System.out.println("Evento borrado\n");
+				menu();
+			}else {
+				System.out.println("El organizador no existe\n");
+				menu();
+			}
+			break;
+		case 4:
+			sc.nextLine();
+			System.out.print("Inscripcion:\n");
+			Iterator<Map.Entry<Evento, ArrayList<Usuario>>> in = incriscion.entrySet().iterator();
+			while (in.hasNext()) {
+			    Map.Entry<Evento, ArrayList<Usuario>> map = in.next();
+			    Evento aa = map.getKey();
+			    ArrayList<Usuario> uu = map.getValue();
+			    System.out.print("Evento: " + aa + " Usuarios: " + uu);
+			}
+
+			System.out.println("\nDe que evento te quieres quitar, diga el nombre");
+			String eventonombre = sc.nextLine();
+			System.out.println("Dime el nombre de usuario");
+			String usuarionombre = sc.nextLine();
+
+			boolean estausuario = false;
+			Iterator<Map.Entry<Evento, ArrayList<Usuario>>> iterator = incriscion.entrySet().iterator();
+
+			while (iterator.hasNext()) {
+			    Map.Entry<Evento, ArrayList<Usuario>> map = iterator.next();
+			    Evento aa = map.getKey();
+			    ArrayList<Usuario> uu = map.getValue();
+			    
+			    if(aa.getNombre().equals(eventonombre)) {
+			        Iterator<Usuario> iteratorusu = uu.iterator();
+			        while(iteratorusu.hasNext()) {
+			            Usuario usuario = iteratorusu.next();
+			            if(usuario.getNombre().equals(usuarionombre)) {
+			                estausuario = true;
+			                iteratorusu.remove(); 
+			                break;
+			            }
+			        }
+			    }
+			    if(estausuario) break;
+			}
+
+			if(estausuario) {
+			    System.out.println("Usuario borrado\n");
+			    menu();
+			} else {
+			    System.out.println("Usuario no encontrado en el evento\n");
+			    menu();
+			}
+			break;
+		default:
+			sc.nextLine();
+			System.out.println("Opcion no valida\nDeseas volver al menu");
+			String opcio = sc.nextLine();
+			if (opcio.toLowerCase().equals("si")) {
+				System.out.println();
+				menu();
+			} else {
+				System.out.println();
+				delete();
+			}
+		}
 	}
 
 	public static void salir() {
@@ -247,9 +396,9 @@ public class Menu {
 			bwin = new BufferedWriter(new FileWriter("incripcion.txt"));
 			Iterator<Map.Entry<Evento, ArrayList<Usuario>>> iterator = incriscion.entrySet().iterator();
 			while (iterator.hasNext()) {
-				 Map.Entry<Evento ,  ArrayList<Usuario>> map = iterator.next();
+				Map.Entry<Evento, ArrayList<Usuario>> map = iterator.next();
 				Evento a = map.getKey();
-				ArrayList<Usuario> b =map.getValue();
+				ArrayList<Usuario> b = map.getValue();
 				bwin.write(a.getNombre() + "," + a.getFecha() + "," + String.valueOf(a.getDuracion_min()) + ","
 						+ a.getLugar() + "," + a.getOr().toString() + "," + a.getCa() + "[");
 				Iterator<Usuario> bb = b.iterator();
@@ -260,7 +409,7 @@ public class Menu {
 				bwin.newLine();
 			}
 
-			System.out.println("Escritura finalizada\nCierre del programa");
+			System.out.println("\nEscritura finalizada\nCierre del programa");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -322,10 +471,10 @@ public class Menu {
 
 			crear = new BufferedWriter(new FileWriter("incripcion.txt", true));
 			brin = new BufferedReader(new FileReader("incripcion.txt"));
-			while ((linea=brin.readLine())!=null) {
-				String [] datos = linea.split("\\[");
-				
-				String [] daeve =  datos[0].split(",");
+			while ((linea = brin.readLine()) != null) {
+				String[] datos = linea.split("\\[");
+
+				String[] daeve = datos[0].split(",");
 				String nombre = daeve[0];
 				String fecha = daeve[1];
 				int duracion = Integer.parseInt(daeve[2]);
@@ -336,11 +485,11 @@ public class Menu {
 				Organizador orga = new Organizador(orgData[0], orgData[1]);
 				Categoria cat = Categoria.valueOf(cate);
 				Evento e = new Evento(nombre, fecha, duracion, lugar, orga, cat);
-				
-				String [] dausu = datos[1].split("-");
+
+				String[] dausu = datos[1].split("-");
 				ArrayList<Usuario> si = new ArrayList<Usuario>();
-				for(int i = 0 ; i<dausu.length;i++) {
-					String [] usuusu = dausu[i].split(",");
+				for (int i = 0; i < dausu.length; i++) {
+					String[] usuusu = dausu[i].split(",");
 					Usuario susu = new Usuario(usuusu[0], usuusu[1], usuusu[2]);
 					si.add(susu);
 				}
