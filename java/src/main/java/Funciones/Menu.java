@@ -26,30 +26,61 @@ public class Menu {
 	private static Map<Evento, ArrayList<Usuario>> incriscion = new HashMap<Evento, ArrayList<Usuario>>();
 
 	public static void menu() {
-		System.out.println("1.Crear Usario\n2.Crear Organizador\n3.Crear Evento\n4.Inscribirse a un Evento\n5.Listar Todo\n6.Borra dato\n7.Salir");
+		System.out.println("1.Usario\n2.Organizador\n3.Listar Todo\n4.Salir");
 		System.out.println("----------------------------");
 		System.out.print("Elige una opcion:");
 		int a = sc.nextInt();
 		switch (a) {
 		case 1:
-			crear_Usuario();
+			System.out.println(
+					"\n1.Crear Usuario\n2.Inscribirse a un evento\n3.Borrar Usuario\n4.Borrar Inscripcion\n5.Volver Menu");
+			System.out.println("----------------------------");
+			System.out.print("Elige una opcion:");
+			int opcionusu = sc.nextInt();
+			switch (opcionusu) {
+			case 1:
+				Usuario.crear_Usuario(listaUsu);
+			case 2:
+				Usuario.incribirse(listaUsu, listaEven, incriscion);
+			case 3:
+				Usuario.borrarUsuario(listaUsu);
+			case 4:
+				Usuario.borrarInscripcion(incriscion);
+			case 5:
+				System.out.println();
+				menu();
+			default:
+				System.out.println("\nOpcion no valida\n ");
+				menu();
+			}
 			break;
 		case 2:
-			crear_Organizador();
+			System.out.println(
+					"\n1.Crear Organizador\n2.Crear Evento\n3.Borrar Organizador\n4.Borrar Evento\n5.Volver Menu");
+			System.out.println("----------------------------");
+			System.out.print("Elige una opcion:");
+			int opcionor = sc.nextInt();
+			switch (opcionor) {
+			case 1:
+				Organizador.crear_Organizador(listaOrga);
+			case 2:
+				Organizador.crear_Evento(listaOrga, listaEven);
+			case 3:
+				Organizador.borrarOrganizador(listaOrga);
+			case 4:
+				Organizador.borrarEvento(listaEven);
+			case 5:
+				System.out.println();
+				menu();
+			default:
+				System.out.println("\nOpcion no valida\n ");
+				menu();
+			}
 			break;
 		case 3:
-			crear_Evento();
+			listar_todo();
 			break;
 		case 4:
-			incribirse();
-			break;
-		case 5:
-			listar_eventos();
-			break;
-		case 6:
-			delete();
-			break;
-		case 7:
 			salir();
 			break;
 		default:
@@ -58,128 +89,7 @@ public class Menu {
 		}
 	}
 
-	public static Usuario crear_Usuario() {
-		sc.nextLine();
-		System.out.println("Escribe tu nombre");
-		String nombre = sc.nextLine();
-		System.out.println("Escribe tu correo");
-		String correo = sc.nextLine();
-		System.out.println("Escibe la contraseña");
-		String contra = sc.nextLine();
-		Usuario a = new Usuario(nombre, correo, contra);
-		listaUsu.add(a);
-		System.out.println("\nCreacion completada\n");
-		menu();
-		return a;
-	}
-
-	public static Organizador crear_Organizador() {
-		sc.nextLine();
-		System.out.println("Escribe tu nombre");
-		String nombre = sc.nextLine();
-		System.out.println("Escribe tu correo");
-		String correo = sc.nextLine();
-		Organizador a = new Organizador(nombre, correo);
-		listaOrga.add(a);
-		System.out.println("\nCreacion completada\n");
-		menu();
-		return a;
-	}
-
-	public static void crear_Evento() {
-		sc.nextLine();
-		System.out.println("Escibe el nombre");
-		String nombre = sc.nextLine();
-		System.out.println("Escibe la fecha");
-		String fec = sc.nextLine();
-		System.out.println("Escribe la duracion en minutos");
-		int duracion = sc.nextInt();
-		sc.nextLine();
-		System.out.println("Escribe el lugar");
-		String lugar = sc.nextLine();
-		System.out.println("Escribe el nombre del Organizadoe que lo crea");
-		String orga = sc.nextLine();
-		Organizador or = null;
-		boolean existeOr = false;
-		Iterator<Organizador> i = listaOrga.iterator();
-		while (i.hasNext()) {
-			Organizador a = i.next();
-			if (a.getNombre().equals(orga)) {
-				existeOr = true;
-				or = a;
-				break;
-			}
-		}
-		if (!existeOr) {
-			System.out.println("\nEl nombre del Organizador no existe, Error\n");
-			menu();
-		}
-		System.out.println("Escribe la categoria ");
-		String cate = sc.nextLine();
-		try {
-			Categoria cat = Categoria.valueOf(cate);
-			Evento eve = new Evento(nombre, fec, duracion, lugar, or, cat);
-			listaEven.add(eve);
-			System.out.println("\nCreacion completada\n");
-		} catch (IllegalArgumentException e) {
-			System.out.println("\nLa categoria no existe, Error\n");
-		}
-		menu();
-	}
-
-	public static void incribirse() {
-		sc.nextLine();
-		System.out.println("Escibe el evento que te quieres inscribir");
-		String nomeve = sc.nextLine();
-		boolean esta = false;
-		Evento eve = null;
-		Iterator<Evento> i = listaEven.iterator();
-		while (i.hasNext()) {
-			Evento a = i.next();
-			if (nomeve.equals(a.getNombre())) {
-				esta = true;
-				eve = a;
-				break;
-			}
-		}
-		if (!esta) {
-			System.out.println("\nEl nombre de el evento no existe, Error\n");
-			menu();
-			return;
-		}
-		System.out.println("Escribe tu nombre de Usuario");
-		String nomusu = sc.nextLine();
-		Usuario usu = null;
-		boolean estausu = false;
-		Iterator<Usuario> it = listaUsu.iterator();
-		while (it.hasNext()) {
-			Usuario a = it.next();
-			if (nomusu.equals(a.getNombre())) {
-				estausu = true;
-				usu = a;
-				break;
-			}
-		}
-		if (!estausu) {
-			System.out.println("\nEl nombre no existe, Error\n");
-			menu();
-			return;
-		}
-		ArrayList<Usuario> lus = incriscion.getOrDefault(eve, new ArrayList<>());
-		if (lus.contains(usu)) {
-			System.out.println("\nEste usuario ya está inscrito en el evento\n");
-			menu();
-			return;
-		}
-
-		lus.add(usu);
-		incriscion.put(eve, lus);
-
-		System.out.println("\nIncriscion completada\n");
-		menu();
-	}
-
-	public static void listar_eventos() {
+	public static void listar_todo() {
 		System.out.print("\nUsuarios:");
 		Iterator<Usuario> us = listaUsu.iterator();
 		while (us.hasNext()) {
@@ -212,157 +122,6 @@ public class Menu {
 		System.out.println();
 		System.out.println();
 		menu();
-	}
-
-	public static void delete() {
-		System.out.println("\n¿Que quieres borrar: \n1.Usuario\n2.Organizador\n3.Eventos\n4.Inscripcion");
-		int caso = sc.nextInt();
-		switch (caso) {
-		case 1:
-			System.out.print("Usuarios:\n");
-			Iterator<Usuario> us = listaUsu.iterator();
-			while (us.hasNext()) {
-				Usuario a = us.next();
-				System.out.print(a);
-			}
-			sc.nextLine();
-			System.out.println("\n¿Que Usuario quires borrar?");
-			String nom = sc.nextLine();
-			boolean esta =false;
-			Usuario u = null;
-			Iterator<Usuario>usu = listaUsu.iterator();
-			while (usu.hasNext()) {
-				Usuario a = usu.next();
-				if(a.getNombre().equals(nom)) {
-					esta=true;
-					u=a;
-				}
-			}
-			if(esta) {
-				listaUsu.remove(u);
-				System.out.println("Usuario borrado\n");
-				menu();
-			}else {
-				System.out.println("El usuario no existe\n");
-				menu();
-			}
-			break;
-		case 2:
-			System.out.print("Organizador:\n");
-			Iterator<Organizador> or = listaOrga.iterator();
-			while (or.hasNext()) {
-				Organizador a = or.next();
-				System.out.print(a);
-			}
-			sc.nextLine();
-			System.out.println("\n¿Que Organizador quires borrar?");
-			String nomb = sc.nextLine();
-			boolean estao =false;
-			Organizador o = null;
-			Iterator<Organizador>org = listaOrga.iterator();
-			while (org.hasNext()) {
-				Organizador a = org.next();
-				if(a.getNombre().equals(nomb)) {
-					estao=true;
-					o=a;
-				}
-			}
-			if(estao) {
-				listaOrga.remove(o);
-				System.out.println("Organizador borrado\n");
-				menu();
-			}else {
-				System.out.println("El organizador no existe\n");
-				menu();
-			}
-			break;
-		case 3:
-			System.out.print("Evento:\n");
-			Iterator<Evento> ev = listaEven.iterator();
-			while (ev.hasNext()) {
-				Evento a = ev.next();
-				System.out.print(a);
-			}
-			sc.nextLine();
-			System.out.println("\n¿Que Evento quires borrar?");
-			String nombr = sc.nextLine();
-			boolean estae =false;
-			Evento e = null;
-			Iterator<Evento>eve= listaEven.iterator();
-			while (eve.hasNext()) {
-				Evento a = eve.next();
-				if(a.getNombre().equals(nombr)) {
-					estae=true;
-					e=a;
-				}
-			}
-			if(estae) {
-				listaEven.remove(e);
-				System.out.println("Evento borrado\n");
-				menu();
-			}else {
-				System.out.println("El organizador no existe\n");
-				menu();
-			}
-			break;
-		case 4:
-			sc.nextLine();
-			System.out.print("Inscripcion:\n");
-			Iterator<Map.Entry<Evento, ArrayList<Usuario>>> in = incriscion.entrySet().iterator();
-			while (in.hasNext()) {
-			    Map.Entry<Evento, ArrayList<Usuario>> map = in.next();
-			    Evento aa = map.getKey();
-			    ArrayList<Usuario> uu = map.getValue();
-			    System.out.print("Evento: " + aa + " Usuarios: " + uu);
-			}
-
-			System.out.println("\nDe que evento te quieres quitar, diga el nombre");
-			String eventonombre = sc.nextLine();
-			System.out.println("Dime el nombre de usuario");
-			String usuarionombre = sc.nextLine();
-
-			boolean estausuario = false;
-			Iterator<Map.Entry<Evento, ArrayList<Usuario>>> iterator = incriscion.entrySet().iterator();
-
-			while (iterator.hasNext()) {
-			    Map.Entry<Evento, ArrayList<Usuario>> map = iterator.next();
-			    Evento aa = map.getKey();
-			    ArrayList<Usuario> uu = map.getValue();
-			    
-			    if(aa.getNombre().equals(eventonombre)) {
-			        Iterator<Usuario> iteratorusu = uu.iterator();
-			        while(iteratorusu.hasNext()) {
-			            Usuario usuario = iteratorusu.next();
-			            if(usuario.getNombre().equals(usuarionombre)) {
-			                estausuario = true;
-			                iteratorusu.remove(); 
-			                break;
-			            }
-			        }
-			    }
-			    if(estausuario) break;
-			}
-
-			if(estausuario) {
-			    System.out.println("Usuario borrado\n");
-			    menu();
-			} else {
-			    System.out.println("Usuario no encontrado en el evento\n");
-			    menu();
-			}
-			break;
-		default:
-			sc.nextLine();
-			System.out.println("Opcion no valida\nDeseas volver al menu");
-			String opcio = sc.nextLine();
-			if (opcio.toLowerCase().equals("si")) {
-				System.out.println();
-				menu();
-			} else {
-				System.out.println();
-				delete();
-			}
-		}
 	}
 
 	public static void salir() {
@@ -511,5 +270,4 @@ public class Menu {
 			}
 		}
 	}
-
 }
